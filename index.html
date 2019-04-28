@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>screen test</title>
+  <style>
+    body {
+      background: #00f;
+    }
+  </style>
+</head>
+
+<body>
+
+
+
+  <script>
+    let cycle = 0;
+
+    document.body.onkeyup = function(e) {
+      doThing(cycle);
+      cycle++;
+    }
+
+    function doThing(i) {
+      document.title = `screen test [${i}]`;
+
+      if(i == 0) { // white background
+        document.body.style['background'] = '#fff';
+      } else if(i == 1) { // black background
+        document.body.style['background'] = '#000';
+      } else if(i == 2) { // gradient background
+        document.body.style['background'] = 'linear-gradient(to right, rgba(0,0,0,1) 0%,rgba(255,255,255,1) 100%)';
+      } else if(i == 3) { // reverse gradient
+        document.body.style['background'] = 'linear-gradient(to right, rgba(255,255,255,1) 0%,rgba(0,0,0,1) 100%)';
+      } else if(i == 4) {
+        document.body.style['background'] = 'linear-gradient(to right, red, orange, yellow, green, cyan, blue, violet, purple)';
+      } else if(i > 4) {
+        cycle = 0;
+        doThing(cycle);
+      }
+    }
+
+    doThing(cycle);
+  </script>
+</body>
+
+</html>
